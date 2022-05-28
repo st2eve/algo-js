@@ -10,4 +10,7 @@ if(userMinAge > userMaxAge){
 else if(userMinAge < userCurrentAge < userMaxAge){
     console.log('You have the good age !');
 }
+else{
+    console.log('You don\'t have the good age !');
+}
 

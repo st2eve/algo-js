@@ -37,32 +37,58 @@ Clarifications
 
 const readlineSync = require("readline-sync");
 
-let customerOne = readlineSync.question('First customer, what time do you need before your checkout ?');
-let customerTwo = readlineSync.question('Second customer, what time do you need before your checkout ?');
-let customerThree = readlineSync.question('third customer, what time do you need before your checkout ?');
-let customerFour = readlineSync.question('Fourth customer, what time do you need before your checkout ?');
-let n = readlineSync.question('There is how many tills ?');
-
-let customers = [customerOne,customerTwo,customerThree,customerFour];
+let customerNb = parseInt(readlineSync.question('How many customer is there ?'));
+let n = parseInt(readlineSync.question('How many tills is there ?'));
+let customers = [];
+let tillsNb = [];
 let timeNeeded = 0;
 
 
-function totalTime (){
-
-    for(let i = 0; i < 4; i++){
-        timeNeeded += parseInt(customers[i]);
+/* Cette fonction demande autant de fois qu'il y a de clients le temps nécessaire pour chacun 
+avant de passer à la caisse puis l'enregistre dans un tableau (customers) */
+function customersArr(){
+    while(customerNb > customers.length){
+        let customerTime = parseInt(readlineSync.question('In order, how much time does each customer need before checking out ?'));
+        customers.push(customerTime);
     }
 }
 
+
+/* Cette fonction crée un tableau (tillsNB) qui contient autant d'éléments débutant 
+à 0 que de nombre de caisse */
+function tillsArr(){
+    while(tillsNb.length < n){
+        tillsNb.push(0);
+    }
+}
+
+
+/* 
+-   Cette fonctione crée une boucle pour sélectionner chaque élément du tableau "customers".
+-   Une nouvelle variable "tillMin" est créée pour additionner chaque élément de "customers" à la plus 
+    petite valeur du tableau tillsNb. 
+-   Une nouvelle variable "tillMinIndex" est créée pour connaitre l'indice de l'élément le plus petit 
+    de "tillsNB".   
+-   On supprime l'élément situé à l'indice sélectionner plus tôt pour le remplacer par la nouvelle valeur
+    calculée plus tôt dans "tillMin"
+-   Enfin, on sélectionne la valeur la plus haute du tableau "tillsNb" qui sera le temps nécessaire pour 
+    tous les checkout.
+*/
+function totalTime(){
+    for(let i = 0; i < customers.length; i++){
+        let tillMin = Math.min(...tillsNb) + customers[i];
+        let tillMinIndex = tillsNb.indexOf(Math.min(...tillsNb));
+        tillsNb.splice(tillMinIndex, 1, tillMin);
+        timeNeeded = Math.max(...tillsNb);
+    }
+    
+}
+
+
+customersArr();
+tillsArr();
 totalTime();
 
-if(Math.max(parseInt(customers)) > (timeNeeded - Math.max(parseInt(customers))) && parseInt(n) != 1){
-    timeNeeded = Math.max(parseInt(customers));
-}
-else{
-    timeNeeded = Math.max(parseInt(customers)) + Math.min(parseInt(customers));
-}
-
-
-
-console.log(parseInt(timeNeeded));
+console.log(customers);
+console.log(tillsNb);
+console.log(timeNeeded);

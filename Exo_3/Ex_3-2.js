@@ -29,3 +29,10 @@ for (let i = 0; i < arrTwo.length; i++) {
  let averageTwo = sumTwo/arrTwo.length;
  
  console.log(averageTwo);
+
+ /* correction */
+
+ let sumC = arrOne.reduce((a, b) => a + b, 0);
+ sumC = sumC / arrOne.length;
+
+ console.log(sumC);

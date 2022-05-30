@@ -24,4 +24,9 @@ for (let i = 0; i < arrTwo.length; i++) {
  
  console.log(sum);
 
+ /* correction */
+
+ let sumC = arrOne.reduce((a, b) => a + b, 0);
+
+ console.log(sumC);
 

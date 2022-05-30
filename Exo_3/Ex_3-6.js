@@ -12,8 +12,13 @@ Example:
 let arrOne = ['hello', 'world', 'this', 'is', 'great'];
 let phrase = "";
 
-for (let i = 0; i < arrOne.length; i++) {
+/*for (let i = 0; i < arrOne.length; i++) {
     phrase += " " + arrOne[i];
  }
 
-  console.log(phrase.replace(/\s+/g, ' ').trim());
+  console.log(phrase.replace(/\s+/g, ' ').trim());*/
+
+
+  /* correction */
+
+console.log(...arrOne);

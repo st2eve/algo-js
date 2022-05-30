@@ -19,3 +19,18 @@ for (let i = 0; i < arr.length; i++) {
 
 
  console.log(sum);
+
+ /* Correction */
+
+ let positive = arr.filter ( function (a) {return a >= 0})
+
+ if(positive === 0){
+     console.log(0)
+ } else {
+     sum = positive.reduce( function (a, b){return a + b})
+     console.log(sum);
+ }
+
+/* Correction */
+positive = arr.filter ( function (a) {return a >= 0}).reduce((a, b) => a + b, 0);
+console.log(positive);

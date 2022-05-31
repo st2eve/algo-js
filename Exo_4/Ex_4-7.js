@@ -22,9 +22,9 @@ elevator(0, 2, 1); // => "right"
 */
 
 function elevator(){
-    let left = 1;
+    let left = 0;
     let right = 1;
-    let call = 2;
+    let call = 0;
     
     if((left == call && left != right) || (call - left) > right){
         left == call;

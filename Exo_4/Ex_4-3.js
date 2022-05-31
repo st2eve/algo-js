@@ -19,7 +19,7 @@ function rand10(max){
     return Math.floor(Math.random() * max); 
 }
 
-/* tant que le nombre d'élément dans le tableau est plus petit 5, il génère et stock un nombre
+/* tant que le nombre d'élément dans le tableau est plus petit que le nombre donné, il génère et stock un nombre
 supplémentaire*/
 function multiRand(n){
     while(arr.length < userNumber){                  
